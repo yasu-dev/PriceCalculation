@@ -1,15 +1,15 @@
 <template>
   <div>
-    <Result_Display></Result_Display>
+    <ResultDisplay></ResultDisplay>
   </div>
 </template>
 
 <script>
-import Result_Display from '../subblocks/Result_Display.vue';
+import ResultDisplay from '../subblocks/Result_Display.vue'
 
 export default {
   components: {
-    Result_Display
+    ResultDisplay
   }
-};
+}
 </script>

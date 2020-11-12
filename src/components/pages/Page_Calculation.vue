@@ -1,17 +1,17 @@
 <template>
 <div class="page-cal">
-  <Main_Calculation></Main_Calculation>
+  <MainCalculation></MainCalculation>
 </div>
 </template>
 
 <script>
-import Main_Calculation from '../mainblocks/Main_Calculation.vue';
+import MainCalculation from '../mainblocks/Main_Calculation.vue'
 
 export default {
   components: {
-    Main_Calculation
+    MainCalculation
   }
-};
+}
 </script>
 
 <style>

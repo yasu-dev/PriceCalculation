@@ -1,8 +1,8 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
-import axios from 'axios';
+import Vue from 'vue'
+import Vuex from 'vuex'
+import axios from 'axios'
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
@@ -18,68 +18,75 @@ export default new Vuex.Store({
   },
 
   mutations: {
-    setZipcode: function(state) {
-      state.zipcode1 = window.localStorage.getItem('zip1');
-      state.zipcode2 = window.localStorage.getItem('zip2');
+    setZipcode: function (state) {
+      state.zipcode1 = window.localStorage.getItem('zip1')
+      state.zipcode2 = window.localStorage.getItem('zip2')
     },
 
-    setLength: function(state) {
-      state.length1 = window.localStorage.getItem('len1');
-      state.length2 = window.localStorage.getItem('len2');
-      state.length3 = window.localStorage.getItem('len3');
+    setLength: function (state) {
+      state.length1 = window.localStorage.getItem('len1')
+      state.length2 = window.localStorage.getItem('len2')
+      state.length3 = window.localStorage.getItem('len3')
     },
 
-    setWeight: function(state) {
-      state.weight = window.localStorage.getItem('wei');
+    setWeight: function (state) {
+      state.weight = window.localStorage.getItem('wei')
     },
 
-    setPrice: function(state, {data}) {
-      var DOMParser = require('xmldom').DOMParser;
-      let xml = data;
-      let parser = new DOMParser();
-      let doc = parser.parseFromString(xml, "text/xml");
-      var elm = doc.getElementsByTagName("Rate")[0];
-      if(state.typesetcount === 0) {
-        state.price = elm.textContent;
-        ++state.typesetcount;
+    setPrice: function (state, {data}) {
+      var DOMParser = require('xmldom').DOMParser
+      let xml = data
+      let parser = new DOMParser()
+      let doc = parser.parseFromString(xml, 'text/xml')
+      var elm = doc.getElementsByTagName('Rate')[0]
+      if (state.typesetcount === 0) {
+        state.price = elm.textContent
+        ++state.typesetcount
       } else {
-        state.expprice = elm.textContent;
-        state.typesetcount = 0;
+        state.expprice = elm.textContent
+        state.typesetcount = 0
       }
     }
   },
 
   actions: {
-    getPricedata: function({commit}, {Xmldata}) {
+    getPricedata: function ({commit}, {Xmldata}) {
       return axios.get('https://secure.shippingapis.com/ShippingAPI.dll', {
-                params: {
-                  API: 'RateV4',
-                  XML: Xmldata,
-                }
-              })
-          .then(response => {
-            commit('setPrice', {data: response.data});
-          });
+        params: {
+          API: 'RateV4',
+          XML: Xmldata
+        }
+      }).then(response => {
+        commit('setPrice', {data: response.data})
+      })
     },
 
-    getZipcodedata: function({commit}) {
-      commit('setZipcode');
+    getZipcodedata: function ({commit}) {
+      commit('setZipcode')
     },
 
-    getLengthdata: function({commit}) {
-      commit('setLength');
+    getLengthdata: function ({commit}) {
+      commit('setLength')
     },
 
-    getWeightdata: function({commit}) {
-      commit('setWeight');
+    getWeightdata: function ({commit}) {
+      commit('setWeight')
     }
   },
 
   getters: {
-    totalLength: function(state) {
-      return Number(state.length1)
-              + Number(state.length2)
-              + Number(state.length3);
+    totalLength: function (state) {
+      return Number(state.length1) +
+             Number(state.length2) +
+             Number(state.length3)
     },
+
+    weightcheck: function (state) {
+      if (Number(state.weight) * 2.20462 < 70) {
+        return false
+      } else {
+        return true
+      }
+    }
   }
-});
+})

@@ -16,11 +16,11 @@
 export default {
   name: 'output-inputdata',
   computed: {
-    totalLength() {
-      return this.$store.getters["totalLength"];
+    totalLength () {
+      return this.$store.getters['totalLength']
     }
   }
-};
+}
 </script>
 
 <style>

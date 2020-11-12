@@ -25,6 +25,9 @@
     </el-input>
   </span>
   cm
+  <div v-if="weightcheck" class="input-weight-message">
+    31.75以下を入力してください
+  </div>
 </div>
 </template>
 
@@ -32,9 +35,15 @@
 export default {
   name: 'app-length',
   mounted () {
-    this.$store.dispatch('getLengthdata');
+    this.$store.dispatch('getLengthdata')
+  },
+  computed: {
+    lengthcheck () {
+      return this.$store.getters['lengthcheck']
+    }
   }
-};
+
+}
 </script>
 
 <style>

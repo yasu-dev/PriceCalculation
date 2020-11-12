@@ -1,12 +1,13 @@
-import Vue from 'vue';
-import Router from 'vue-router';
+import Vue from 'vue'
+import Router from 'vue-router'
 
-import pageCalculation from '../components/pages/Page_Calculation.vue';
-import pageResult from '../components/pages/Page_Result.vue';
+import pageCalculation from '../components/pages/Page_Calculation.vue'
+import pageResult from '../components/pages/Page_Result.vue'
 
-Vue.use(Router);
+Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -19,4 +20,4 @@ export default new Router({
       component: pageResult
     }
   ]
-});
+})

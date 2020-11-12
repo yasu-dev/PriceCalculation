@@ -25,9 +25,9 @@
 export default {
   name: 'app-zipcode',
   mounted () {
-    this.$store.dispatch('getZipcodedata');
+    this.$store.dispatch('getZipcodedata')
   }
-};
+}
 </script>
 
 <style>

@@ -1,17 +1,17 @@
 <template>
 <div class="page-result">
-  <Main_Result></Main_Result>
+  <MainResult></MainResult>
 </div>
 </template>
 
 <script>
-import Main_Result from '../mainblocks/Main_Result.vue';
+import MainResult from '../mainblocks/Main_Result.vue'
 
 export default {
   components: {
-    Main_Result
+    MainResult
   }
-};
+}
 </script>
 
 <style>
