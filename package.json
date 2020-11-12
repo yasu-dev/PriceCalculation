@@ -1,6 +1,7 @@
 {
   "name": "test-vue",
   "version": "1.0.0",
+  "homepage": "./",
   "description": "A Vue.js project",
   "author": "",
   "private": true,
